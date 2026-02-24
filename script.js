@@ -22,9 +22,16 @@ function setNumber(number) {
 
 // Operator Buttons
 const operators = document.querySelectorAll(".operator");
-operators.forEach((operator) => {
-    operator.addEventListener("click", (e) => {
-        setOperator(e.target.textContent)
+operators.forEach((operatorBtn) => {
+    operatorBtn.addEventListener("click", (e) => {
+        if (!operator) {
+            setOperator(e.target.textContent)
+        } else if (number1, number2, operator) {
+            number1 = operate(number1, number2, operator)
+            displayNumber(number1)
+            setOperator(e.target.textContent)
+            number2 = ""
+        }
     })
 })
 
