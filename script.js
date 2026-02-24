@@ -17,6 +17,17 @@ function setNumber(number) {
     }
 }
 
+const operators = document.querySelectorAll(".operator");
+operators.forEach((operator) => {
+    operator.addEventListener("click", (e) => {
+        setOperator(e.target.textContent)
+    })
+})
+
+function setOperator(operatorChoice) {
+    operator = operatorChoice
+}
+
 function operate (number1, number2, operator) {
     if(operator === "+") {
         return (add(number1, number2))
