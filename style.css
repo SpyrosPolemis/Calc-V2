@@ -11,7 +11,7 @@ body {
 }
 
 #calculator {
-    height: 550px;
+    height: fit-content;
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@ body {
     padding: 5px;
     margin: 5px;
     text-align: end;
-    height: 20%;
+    font-size: 60px;
 }
 
 #keypad {
@@ -39,14 +39,7 @@ body {
     justify-content: space-around;
 }
 
-.number,
-.operator {
+.row > * {
     flex: 1 0 30px;
     aspect-ratio: 1 / 1;
-}
-
-#zero {
-    flex: 0 1 40px;
-    min-width: 75%;
-    aspect-ratio: auto;
 }
