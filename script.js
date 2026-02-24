@@ -29,7 +29,7 @@ operators.forEach((operator) => {
 })
 
 function setOperator(operatorChoice) {
-    operator = operatorChoice
+    operator = operatorChoice;
 }
 
 // Display
@@ -38,31 +38,39 @@ function displayNumber(numberToDisplay) {
     display.textContent = numberToDisplay
 }
 
+// Evaluating
+const equalsBtn = document.querySelector("#equals-btn");
+equalsBtn.onclick = () => {
+    number1 = (operate(number1, number2, operator))
+    displayNumber(number1)
+    setOperator("")
+    number2 = ""
+};
+
 // Calculator Functions
 function operate (number1, number2, operator) {
     if(operator === "+") {
         return (add(number1, number2))
-    }
-    if(operator === "-") {
+    } else if(operator === "-") {
         return (subtract(number1, number2))
-    }
-    if(operator === "*") {
+    } else if(operator === "X") {
         return (multiply(number1, number2))
-    }
-    if(operator === "/") {
+    } else if(operator === "/") {
         return (divide(number1, number2))
+    } else {
+        console.log("Error")
     }
 }
 
 function add(number1, number2) {
-    return number1 + number2;
+    return Number(number1) + Number(number2);
 }
 function subtract(number1, number2) {
-    return number1 - number2;
+    return Number(number1) - Number(number2);
 }
 function multiply(number1, number2) {
-    return number1 * number2; 
+    return Number(number1) * Number(number2);
 }
 function divide(number1, number2) {
-    return number1 / number2;    
+    return Number(number1) / Number(number2);
 }
