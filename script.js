@@ -1,6 +1,21 @@
-let number1;
-let number2;
-let operator;
+let number1 = "";
+let number2 = "";
+let operator = "";
+
+const numbers = document.querySelectorAll(".number");
+numbers.forEach((number) => {
+    number.addEventListener("click", (e) => {
+        setNumber(e.target.textContent)
+    })
+})
+
+function setNumber(number) {
+    if(operator) {
+        number2 += number
+    } else {
+        number1 += number
+    }
+}
 
 function operate (number1, number2, operator) {
     if(operator === "+") {
