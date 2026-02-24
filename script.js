@@ -38,7 +38,7 @@ function displayNumber(numberToDisplay) {
     display.textContent = numberToDisplay
 }
 
-// Evaluating
+// Equals Button
 const equalsBtn = document.querySelector("#equals-btn");
 equalsBtn.onclick = () => {
     number1 = (operate(number1, number2, operator))
@@ -46,6 +46,16 @@ equalsBtn.onclick = () => {
     setOperator("")
     number2 = ""
 };
+
+// Clear Button
+const clearBtn = document.querySelector("#clear-btn");
+clearBtn.onclick = 
+function clearCalc() {
+    number1 = "";
+    number2 = "";
+    setOperator("")
+    displayNumber("")
+}
 
 // Calculator Functions
 function operate (number1, number2, operator) {
