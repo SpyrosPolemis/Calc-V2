@@ -2,6 +2,7 @@ let number1 = "";
 let number2 = "";
 let operator = "";
 
+// Number Buttons
 const numbers = document.querySelectorAll(".number");
 numbers.forEach((number) => {
     number.addEventListener("click", (e) => {
@@ -12,11 +13,14 @@ numbers.forEach((number) => {
 function setNumber(number) {
     if(operator) {
         number2 += number
+        displayNumber(number2)
     } else {
         number1 += number
+        displayNumber(number1)
     }
 }
 
+// Operator Buttons
 const operators = document.querySelectorAll(".operator");
 operators.forEach((operator) => {
     operator.addEventListener("click", (e) => {
@@ -28,6 +32,13 @@ function setOperator(operatorChoice) {
     operator = operatorChoice
 }
 
+// Display
+const display = document.querySelector("#display");
+function displayNumber(numberToDisplay) {
+    display.textContent = numberToDisplay
+}
+
+// Calculator Functions
 function operate (number1, number2, operator) {
     if(operator === "+") {
         return (add(number1, number2))
