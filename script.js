@@ -11,9 +11,17 @@ numbers.forEach((number) => {
 })
 
 function setNumber(number) {
+    // TODO: Cleanup decimal handling
     if(operator) {
-        number2 += number
-        displayNumber(number2)
+        if (number === "."){
+            if(!number2.includes(".")) {
+                number2 += number
+                displayNumber(number2)
+            }
+        } else {
+            number2 += number
+            displayNumber(number2)
+        }
     } else {
         number1 += number
         displayNumber(number1)
@@ -52,6 +60,8 @@ function displayNumber(numberToDisplay) {
 }
 
 // Equals Button
+// TODO: Pressing equals multiple times causes error, add check to make sure 
+// all parts of operation are defined before evaluationg
 const equalsBtn = document.querySelector("#equals-btn");
 equalsBtn.onclick = () => {
     number1 = (operate(number1, number2, operator))
@@ -94,6 +104,7 @@ function subtract(number1, number2) {
 function multiply(number1, number2) {
     return Number(number1) * Number(number2);
 }
+// TODO: Add check for dividing by 0
 function divide(number1, number2) {
     return Number(number1) / Number(number2);
 }
