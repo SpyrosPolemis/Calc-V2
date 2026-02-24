@@ -42,7 +42,13 @@ function setOperator(operatorChoice) {
 // Display
 const display = document.querySelector("#display");
 function displayNumber(numberToDisplay) {
+    if(numberToDisplay === "") {
+        display.textContent = "";
+    } else if (!Number.isInteger(+numberToDisplay)) {
+        display.textContent = Number(numberToDisplay).toFixed(2)
+    } else {
     display.textContent = numberToDisplay
+    }
 }
 
 // Equals Button
