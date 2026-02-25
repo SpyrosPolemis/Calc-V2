@@ -14,6 +14,10 @@ function setNumber(number) {
     if(operator) {
             number2 += number
             displayNumber(number2)
+    } else if(equalsClicked){
+        number1 = number
+        equalsClicked = false
+        displayNumber(number1)
     } else {
         number1 += number
         displayNumber(number1)
@@ -69,6 +73,7 @@ function displayNumber(numberToDisplay) {
 }
 
 // Equals Button
+let equalsClicked = false;
 const equalsBtn = document.querySelector("#equals-btn");
 equalsBtn.onclick = () => {
     if (number1, number2, operator) {
@@ -77,11 +82,14 @@ equalsBtn.onclick = () => {
             clearCalc()
             displayNumber("STOP THAT")
         } else if (!Number.isInteger(number1)) {
+            equalsClicked = true
             number1 = Number(number1).toFixed(2)
         } else {
+            equalsClicked = true
             displayNumber(number1)
             setOperator("")
             number2 = ""
+            
         }
     }
 };
@@ -94,6 +102,7 @@ function clearCalc() {
     number2 = "";
     setOperator("")
     displayNumber("")
+    equalsClicked = false
 }
 
 // Calculator Functions
