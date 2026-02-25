@@ -13,17 +13,23 @@ numbers.forEach((number) => {
 function setNumber(number) {
     // TODO: Cleanup decimal handling
     if(operator) {
-        if (number === "."){
-            if(!number2.includes(".")) {
-                number2 += number
-                displayNumber(number2)
-            }
-        } else {
             number2 += number
             displayNumber(number2)
-        }
     } else {
         number1 += number
+        displayNumber(number1)
+    }
+}
+
+// Decimal Button
+const decimal = document.querySelector("#decimal")
+decimal.onclick = handleDecimal
+function handleDecimal() {
+    if(operator && !number2.includes(".")) {
+            number2 += "."
+            displayNumber(number2)
+    } else if (!operator && !number1.includes(".")) {
+        number1 += "."
         displayNumber(number1)
     }
 }
