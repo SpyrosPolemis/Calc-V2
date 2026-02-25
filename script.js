@@ -67,13 +67,16 @@ function displayNumber(numberToDisplay) {
 // all parts of operation are defined before evaluationg
 const equalsBtn = document.querySelector("#equals-btn");
 equalsBtn.onclick = () => {
-    number1 = (operate(number1, number2, operator))
-    if (!Number.isInteger(number1)) {
-        number1 = Number(number1).toFixed(2)
+    if (number1, number2, operator) {
+        number1 = (operate(number1, number2, operator))
+        if (!Number.isInteger(number1)) {
+            number1 = Number(number1).toFixed(2)
+        }
+        displayNumber(number1)
+        setOperator("")
+        number2 = ""
     }
-    displayNumber(number1)
-    setOperator("")
-    number2 = ""
+
 };
 
 // Clear Button
