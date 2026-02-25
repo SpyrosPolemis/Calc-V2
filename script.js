@@ -41,9 +41,15 @@ operators.forEach((operatorBtn) => {
             setOperator(e.target.textContent)
         } else if (number1, number2, operator) {
             number1 = operate(number1, number2, operator)
-            displayNumber(number1)
-            setOperator(e.target.textContent)
-            number2 = ""
+            if (number1 === false) {
+                clearCalc()
+                displayNumber("STOP THAT")
+            } else {
+                displayNumber(number1)
+                setOperator(e.target.textContent)
+                number2 = ""
+            }
+            
         }
     })
 })
@@ -63,25 +69,26 @@ function displayNumber(numberToDisplay) {
 }
 
 // Equals Button
-// TODO: Pressing equals multiple times causes error, add check to make sure 
-// all parts of operation are defined before evaluationg
 const equalsBtn = document.querySelector("#equals-btn");
 equalsBtn.onclick = () => {
     if (number1, number2, operator) {
         number1 = (operate(number1, number2, operator))
-        if (!Number.isInteger(number1)) {
+        if (number1 === false) {
+            clearCalc()
+            displayNumber("STOP THAT")
+        } else if (!Number.isInteger(number1)) {
             number1 = Number(number1).toFixed(2)
+        } else {
+            displayNumber(number1)
+            setOperator("")
+            number2 = ""
         }
-        displayNumber(number1)
-        setOperator("")
-        number2 = ""
     }
-
 };
 
 // Clear Button
 const clearBtn = document.querySelector("#clear-btn");
-clearBtn.onclick = 
+clearBtn.onclick = clearCalc
 function clearCalc() {
     number1 = "";
     number2 = "";
@@ -113,7 +120,9 @@ function subtract(number1, number2) {
 function multiply(number1, number2) {
     return Number(number1) * Number(number2);
 }
-// TODO: Add check for dividing by 0
 function divide(number1, number2) {
+    if(number2 == "0") {
+        return false
+    }
     return Number(number1) / Number(number2);
 }
