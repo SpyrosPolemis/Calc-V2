@@ -11,7 +11,6 @@ numbers.forEach((number) => {
 })
 
 function setNumber(number) {
-    // TODO: Cleanup decimal handling
     if(operator) {
             number2 += number
             displayNumber(number2)
@@ -58,8 +57,6 @@ const display = document.querySelector("#display");
 function displayNumber(numberToDisplay) {
     if(numberToDisplay === "") {
         display.textContent = "";
-    } else if (!Number.isInteger(+numberToDisplay)) {
-        display.textContent = Number(numberToDisplay).toFixed(2)
     } else {
     display.textContent = numberToDisplay
     }
@@ -71,6 +68,9 @@ function displayNumber(numberToDisplay) {
 const equalsBtn = document.querySelector("#equals-btn");
 equalsBtn.onclick = () => {
     number1 = (operate(number1, number2, operator))
+    if (!Number.isInteger(number1)) {
+        number1 = Number(number1).toFixed(2)
+    }
     displayNumber(number1)
     setOperator("")
     number2 = ""
